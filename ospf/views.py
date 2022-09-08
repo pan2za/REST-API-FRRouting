@@ -9,7 +9,7 @@ from ospf import serializers
 from lib import common_func
 BASE_DIRECTORY = os.path.join(os.getcwd(), "../lib")
 
-
+import json
 
 
 ########################## start Basic OSPF ########################
@@ -472,3 +472,18 @@ class OspfAdvGlobalDetail(APIView):
             status=status.HTTP_204_NO_CONTENT
         )
 ########################## End Advanced Global ################
+
+
+########################## Start Routes lookup ##############
+class OspfRtLookup(APIView):
+    """ Ospf Routes Lookup"""
+
+    def get(self, request):
+        """List all ospf routes"""
+        command = ["vtysh", "-c","show ip ospf neighbor"]
+        outs = common_func.insert_cmd_shell_outs(command)
+        data = {'info':outs}
+        return Response(
+            data=data
+        )
+########################## End Routes lookup ##############

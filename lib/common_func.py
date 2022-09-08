@@ -8,6 +8,7 @@ NOT_SUCCESS = 0
 
 def insert_cmd_shell(command):
     """insert params into frr by shell"""
+    print("exec command: ", command)
     proc = Popen(command, stdout=PIPE, stderr=STDOUT)
     try:
         _outs, _errs = proc.communicate(timeout=30)
@@ -53,3 +54,18 @@ def check_interface_validation(interface):
         ipr.close()
         return 0
     return SUCCESS
+
+def insert_cmd_shell_outs(command):
+    """insert params into frr by shell"""
+    outs = ""
+    proc = Popen(command, stdout=PIPE, stderr=STDOUT)
+    try:
+        outs, _errs = proc.communicate(timeout=30)
+        exit_status = proc.poll()
+        if exit_status != 0:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    except TimeoutExpired:
+        proc.kill()
+        outs, _errs = proc.communicate()
+        return Response(status=status.HTTP_408_REQUEST_TIMEOUT)
+    return outs

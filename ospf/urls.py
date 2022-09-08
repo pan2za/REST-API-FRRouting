@@ -9,5 +9,6 @@ urlpatterns = [
     path('advanced/area/', views.OspfAdvArea.as_view()),
     path('advanced/area/<int:pk>/', views.OspfAdvAreaDetail.as_view()),
     path('advanced/global/', views.OspfAdvGlobal.as_view()),
-    path('advanced/global/<int:pk>/', views.OspfAdvGlobalDetail.as_view())
+    path('advanced/global/<int:pk>/', views.OspfAdvGlobalDetail.as_view()),
+    path('routes', views.OspfRtLookup.as_view()),
 ]
