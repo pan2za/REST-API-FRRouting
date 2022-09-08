@@ -539,6 +539,11 @@ line vty
 !
 end
 ```
+Exp5: Lookup Routes Information
+```
+curl -X GET http://localhost:8000/ospf/routes
+{"info":"% OSPF is not enabled in vrf default\n% OSPF is not enabled in vrf default\n\nOSPF Instance: 3\n\n\nNeighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL\n\n% OSPF is not enabled in vrf default\n\nOSPF Instance: 5\n\n\nNeighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL\n\n% OSPF is not enabled in vrf default\n"}
+
 [http://docs.frrouting.org/projects/dev-guide/en/latest/building-frr-for-ubuntu2004.html]: http://docs.frrouting.org/projects/dev-guide/en/latest/building-frr-for-ubuntu2004.html
 
 [https://frrouting.readthedocs.io/en/latest/ospfd.html#multi-instance-support]: https://frrouting.readthedocs.io/en/latest/ospfd.html#multi-instance-support
