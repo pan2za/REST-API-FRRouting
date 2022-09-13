@@ -94,10 +94,10 @@ class OspfBasicDetail(APIView):
         common_func.save_serializer_put(serializer)
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
-    def delete(self, request, primary_key):
+    def delete(self, request, pk):
         """Delete a ospf instance"""
-        ospf = self.get_obj(primary_key)
-        command = ["/bin/bash", "ospf/shell/ospf_basic.sh", "delete", str(primary_key)]
+        ospf = self.get_obj(pk)
+        command = ["/bin/bash", "ospf/shell/ospf_basic.sh", "delete", str(pk)]
         common_func.insert_cmd_shell(command)
         ospf.delete()
         return Response(
@@ -452,9 +452,9 @@ class OspfAdvGlobalDetail(APIView):
 
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
-    def delete(self, request, primary_key):
+    def delete(self, request, pk):
         """Delete a ospf instance"""
-        ospfglobal = self.get_obj(primary_key)
+        ospfglobal = self.get_obj(pk)
         command = ["/bin/bash", "ospf/shell/ospf_adv_global.sh", "delete",
                    request.data["id_instance"],
                    request.data["passive_interface"],
