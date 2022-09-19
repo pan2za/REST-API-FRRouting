@@ -67,9 +67,9 @@ class OspfBasicDetail(APIView):
         serializer = serializers.OspfSerializer(ospf)
         return Response(data=serializer.data)
 
-    def put(self, request, primary_key):
+    def put(self, request, pk):
         """Edit a ospf instance"""
-        ospf = self.get_obj(primary_key)
+        ospf = self.get_obj(pk)
         serializer = serializers.OspfSerializer(
             instance=ospf,
             data=request.data
