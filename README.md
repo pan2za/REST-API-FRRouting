@@ -24,11 +24,11 @@ Frrouting must be installed from following link:\
 http://docs.frrouting.org/projects/dev-guide/en/latest/building-frr-for-ubuntu2004.html . \
 And then
 ```
-$ git clone https://github.com/Omidznlp/REST-API-FRRouting.git
+$ git clone https://e.coding.net/goodput/tfw/REST-API-FRRouting.git 
 $ cd REST-API-FRRouting
-$ sudo python3.8 manage.py makemigrations
-$ sudo python3.8 manage.py createsuperuser --email admin@example.com --username admin
-$ sudo python3.8 manage.py migrate
+$ sudo python3 manage.py makemigrations
+$ sudo python3 manage.py createsuperuser --email admin@example.com --username admin
+$ sudo python3 manage.py migrate
 $ ./setup.sh
 ```
 ### RUN and STOP
