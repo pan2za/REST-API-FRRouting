@@ -99,6 +99,13 @@ class OspfBasicDetail(APIView):
         ospf = self.get_obj(pk)
         command = ["/bin/bash", "ospf/shell/ospf_basic.sh", "delete", str(pk)]
         common_func.insert_cmd_shell(command)
+
+        """Delete the interface attached """
+        intf_mode = "interface "+ request.data["interface_name"]
+        no_ospf = "no ip ospf " + str(pk) + " area " + request.data["interface_area"]
+        noint_cmd = ["vtysh", "-c","conf t","-c", intf_mode, "-c", no_ospf]
+        common_func.insert_cmd_shell(noint_cmd) 
+
         ospf.delete()
         return Response(
             status=status.HTTP_204_NO_CONTENT
